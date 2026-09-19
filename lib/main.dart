@@ -46,14 +46,43 @@ class MyApp extends StatelessWidget {
   }
 }
 
+//sifat kaku dan tidak bisa diubah yang dimana tidak boleh menyimpan variabel yg berubah-ubah
 class CartPage extends StatefulWidget {
   const CartPage({super.key});
 
+  //jembatan penghubung antara class CartPage dan _CartPageState
   @override
   State<CartPage> createState() => _CartPageState();
 }
 
+//sifat nya bisa berubah kapan aja dan menjadi otak dan brankas data aplikasi
 class _CartPageState extends State<CartPage> {
+  String bannerMessage = ''; //digunakan untuk menyimpan notif saat produk di Long-Press
+
+      List<Product> products = [ //untuk menampung banyak item sekaligus
+        Product(
+          name: 'Wireless Headphone',
+          subtitle: 'Sony WH-CH520',
+          price: 350000,
+          imageUrl: 'https://i.imgur.com/nNik8C5.jpeg',
+          likes: 12,
+        ),
+        Product(
+          name: 'Laptop ASUS Vivobook',
+          subtitle: 'ASUS',
+          price: 7500000,
+          imageUrl: 'https://i.imgur.com/QtyesPv.jpeg',
+          likes: 8,
+        ),
+        Product(
+          name: 'Wireless Mouse',
+          subtitle: 'Logitech M330',
+          price: 250000,
+          imageUrl: 'https://i.imgur.com/qLei2RD.jpeg',
+          likes: 5,
+        ),
+      ];
+
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
@@ -62,5 +91,57 @@ class _CartPageState extends State<CartPage> {
       ),
     );
   }
+}
+
+@override
+  Widget build(BuildContext context) {
+  return Scaffold(
+    // Membuat Header Atas (AppBar)
+    appBar: AppBar(
+      backgroundColor: Colors.blue,
+      elevation: 0,
+      title: Row( // Row dipakai disini untuk menaruh icon keranjang(kiri) yang berdampingan dengan tulisan(kanan) 'MyCart cart dan belanja lebih mudah setiap hari'
+        children: [ // bagian judul utama di AppBar
+          const Icon(
+            Icons.shopping_cart,
+            color: Colors.white,
+            size: 28,
+          ),
+          const SizedBox(width: 10),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: const[
+              Text(
+                'MyCart',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+              Text(
+                'Belanja lebih mudah setiap hari',
+                style: TextStyle(
+                  fontSize: 12,
+                  color: Colors.white70,
+                ),
+              ),
+            ],
+          )
+        ],
+      ),
+      actions: [
+        IconButton(
+          icon: const Icon(Icons.search, color: Colors.white),
+          onPressed: () {},
+        ),
+      ],
+    ),
+
+    // Masuk ke bagian badan layar
+    body: const Center(
+      child: Text('Daftar Text Akan Muncul Disini'),
+      ),
+  );
 }
 
