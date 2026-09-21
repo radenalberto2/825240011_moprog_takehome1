@@ -60,6 +60,7 @@ class _CartPageState extends State<CartPage> {
   String bannerMessage = ''; //digunakan untuk menyimpan notif saat produk di Long-Press
 
   List<Product> products = [ //untuk menampung banyak item sekaligus
+    // di bagian ini ada temen saya yang minta linkUrl gambarnya jadi mungkin akan ada link yang sama seperti ini. Terimakasih.
     Product(
       name: 'Wireless Headphone',
       subtitle: 'Sony WH-CH520',
